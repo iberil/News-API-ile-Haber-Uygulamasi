@@ -7,30 +7,38 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ## Proje Geliştirme Aşamaları
 
 1. **Proje Kurulumu ve Yapılandırma**
+
    - Angular CLI ile proje oluşturuldu.
    - Gerekli bağımlılıklar ve temel yapılandırmalar yapıldı.
 
 2. **Haber Servisinin Oluşturulması**
+
    - `NewsService` ile NewsAPI üzerinden haber verilerinin çekilmesi sağlandı.
    - Kategori ve arama sorgusu ile filtreleme desteği eklendi.
 
 3. **Model ve Tip Tanımlamaları**
+
    - `news.model.ts` ile haber verisi için tip/model tanımlamaları yapıldı.
 
 4. **Ana Sayfa (Home Page) Geliştirmesi**
+
    - Arama, kategori seçimi ve haber listeleme özellikleri eklendi.
    - Farklı kart ve slider görünümleriyle zenginleştirildi.
 
 5. **Haber Detay Sayfası**
+
    - (Not: `news-detail` sayfası için şablon henüz tamamlanmamış görünüyor.)
 
 6. **Bileşenlerin Oluşturulması**
+
    - `news-list`, `news-item` ve `news-card` gibi yeniden kullanılabilir bileşenler geliştirildi.
 
 7. **Paylaşılan (Shared) Yapılar**
+
    - Ortak kullanılan kart, pipe (`truncate.pipe.ts`) ve direktif (`highlight.directive.ts`) gibi yardımcı yapılar eklendi.
 
 8. **Stil ve Responsive Tasarım**
+
    - SCSS dosyaları ile modern ve responsive bir arayüz tasarlandı.
 
 9. **Testler**
@@ -39,10 +47,12 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ## Uygulama Arayüzü
 
 ### Ana Sayfa
-![Ana Sayfa](screenshots/home.png)
+
+![Ana Sayfa](assets/screenshots/home.png)
 
 ### Latest News Bölümü
-![Latest News](screenshots/latest-news.png)
+
+![Latest News](assets/screenshots/latest-news.png)
 
 ## Development server
 
