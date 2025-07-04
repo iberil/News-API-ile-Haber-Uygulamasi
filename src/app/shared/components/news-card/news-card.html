@@ -1,0 +1,22 @@
+<!-- news-card.component.html -->
+<div
+  class="news-card"
+  [ngStyle]="{'background-image': 'url(' + (article.urlToImage || placeholder) + ')'}"
+>
+  <div class="news-card-overlay">
+    <div class="news-title">{{ article.title }}</div>
+    <div class="news-meta">
+      <div>{{ article.author || 'Unknown' }}</div>
+      <div>{{ article.publishedAt | date:'mediumDate' }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="news-card-body">
+  <div class="news-card-header">{{ article.title }}</div>
+  <div class="news-meta light">
+    <div>{{ article.author || 'Unknown' }}</div>
+    <div>{{ article.publishedAt | date:'mediumDate' }}</div>
+  </div>
+  <div class="news-summary">{{ article.description }}</div>
+</div>
