@@ -48,11 +48,11 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ### Ana Sayfa
 
-![Ana Sayfa](assets/screenshots/home.png)
+![Ana Sayfa](src/assets/screenshots/home.png)
 
 ### Latest News Bölümü
 
-![Latest News](assets/screenshots/latest-news.png)
+![Latest News](src/assets/screenshots/latest-news.png)
 
 ## Development server
 
