@@ -1,0 +1,11 @@
+<div *ngIf="newsItem" class="news-detail-wrapper">
+  <h1 class="news-detail-title">{{ newsItem.title }}</h1>
+  <img *ngIf="newsItem.urlToImage" [src]="newsItem.urlToImage" class="news-detail-img" alt="News Image" />
+  <div class="news-detail-meta">
+    <span>By {{ newsItem.author || 'Unknown' }}</span>
+    <span>{{ newsItem.publishedAt | date:'mediumDate' }}</span>
+  </div>
+  <div class="news-detail-content">
+    {{ newsItem.description || newsItem.content }}
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NewsService } from '../../core/services/news.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, switchMap, tap, startWith } from 'rxjs/operators';
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
   selectedCategory = '';
   searchControl = new FormControl('');
 
-  constructor(private newsService: NewsService) {}
+  constructor(private newsService: NewsService, private router: Router) {}
 
   ngOnInit() {
     this.searchControl.valueChanges
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit {
       )
       .subscribe((news) => {
         this.news = news;
+        localStorage.setItem('newsList', JSON.stringify(news));
         console.log(news[0].urlToImage); // veya kullandığın alan
       });
 
@@ -88,5 +90,13 @@ export class HomeComponent implements OnInit {
     } else if (this.news) {
       this.currentSlide = this.news.length - 1;
     }
+  }
+
+  goToDetail(index: number) {
+    this.router.navigate(['/news', index]);
+  }
+
+  goToDetailByIndex(index: number) {
+    this.router.navigate(['/news', index]);
   }
 }

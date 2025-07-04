@@ -7,6 +7,7 @@
 .home-page-wrapper {
   // padding: 20px 0;
   background-color: #f3f2ea;
+  min-height: 100vh;
 }
 
 .top-header {
@@ -159,13 +160,14 @@
   overflow: hidden;
 }
 .text-only-news-card {
-  height: 135px;
+  height: 100px;
   margin: 0;
-  padding: 18px 20px 18px 15px;
+  padding: 8px 16px 8px 12px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .news-list-container {
@@ -247,10 +249,13 @@
 }
 
 .text-news-img {
-  width: 106px;
-  height: 60px;
-  object-fit: cover;
-  align-self: flex-start;
+  width: 100%;
+  max-width: 106px;
+  height: 100%;
+  max-height: 100px;
+  object-fit: contain;
+  align-self: stretch;
+  display: block;
 }
 
 .text-only-news-card .headline {
@@ -398,27 +403,30 @@
   word-wrap: break-word;
   text-align: left;
   padding: 10px;
+  margin-top: 29px;
 }
 
 .trending-headlines-wrapper {
-  width: 410px;
-  min-width: 410px;
-  max-width: 410px;
-  height: 1360px;
+ 
+  flex: 1 1 410px;
   background: #fff;
   border: 1px solid #d5d5d5;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 29px; 
+  margin-left: 32px;
+  box-sizing: border-box;
+  padding-top: 0;
 }
-.main-news-layout,
-.news-cards-container {
+
+.main-news-layout {
   width: 1240px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   gap: 32px;
   box-sizing: border-box;
+  align-items: flex-start;
 }
 
 @media (max-width: 1300px) {
@@ -434,10 +442,12 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin-bottom: 35px;
 }
 
 .LatestNews-Title {
-  margin: 0;
+  margin-top: 29px;
+  margin-left: 0;
   padding: 0;
 }
 
@@ -447,7 +457,8 @@
   grid-template-rows: repeat(4, 340px);
   gap: 32px;
   margin-top: 32px;
-  justify-content: center;
+  justify-content: start;
+  margin-left: 0;
 }
 
 .latest-news-card {
@@ -465,20 +476,35 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.14);
 }
 
-.latest-news-card-img {
+.latest-news-card-img-wrapper {
   width: 100%;
   height: 140px;
+  overflow: hidden;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.latest-news-card-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
+  display: block;
 }
 
 .latest-news-card-content {
   flex: 1;
-  padding: 16px;
+  padding: 20px 16px 8px 16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
+}
+
+.latest-news-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
 }
 
 .latest-news-card-title {
@@ -486,11 +512,7 @@
   font-family: Georgia, serif;
   font-weight: 700;
   color: black;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 .latest-news-card-meta {
@@ -508,11 +530,7 @@
   font-weight: 400;
   color: #04594d;
   margin-top: 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 .latest-news-img-overlay-wrapper {
@@ -577,6 +595,18 @@
   flex-direction: column;
   gap: 20px;
 }
+.trending-headlines-list::-webkit-scrollbar {
+  width: 8px;
+  background: #f3f2ea;
+  border-radius: 8px;
+}
+.trending-headlines-list::-webkit-scrollbar-thumb {
+  background: #04594d;
+  border-radius: 8px;
+}
+.trending-headlines-list::-webkit-scrollbar-thumb:hover {
+  background: #033c34;
+}
 
 /* Ana kart yapısı */
 .trending-headline-card {
@@ -634,6 +664,81 @@
   word-wrap: break-word;
 }
 
+.view-more-wrapper {
+  display: flex;
+  justify-content: center; // yatay ortala
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.view-more-btn {
+  width: auto;
+  min-width: 140px;
+  height: auto;
+  padding: 16px 36px;
+  background-color: #04594d;
+  color: #fdfdfd;
+  font-size: 20px;
+  font-family: "MaryToddW00-Regular", sans-serif;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  word-wrap: break-word;
+  text-align: center;
+  user-select: none;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+
+  @media (max-width: 480px) {
+    min-width: 100px;
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  &:hover {
+    background-color: #034037;
+  }
+}
+
+.news-card-anim {
+  transition: transform 0.18s cubic-bezier(0.4,0,0.2,1), box-shadow 0.18s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform, box-shadow;
+}
+.news-card-anim:hover, .news-card-anim:focus {
+  transform: scale(1.025);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13), 0 1.5px 6px rgba(0,0,0,0.08);
+  z-index: 2;
+}
+.news-card-anim:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+.text-only-news-card,
+.highlighted-news-card,
+.secondary-news-card {
+  transition: none !important;
+}
+
+.text-only-news-card:hover, .text-only-news-card:focus,
+.highlighted-news-card:hover, .highlighted-news-card:focus,
+.secondary-news-card:hover, .secondary-news-card:focus {
+  background: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  cursor: pointer;
+}
+
+body .highlighted-news-card:active {
+  background: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  color: inherit !important;
+}
+
 // Responsive
 @media (max-width: 1920px) {
   .main-news-layout {
@@ -655,4 +760,43 @@
     flex-direction: column;
     gap: 24px;
   }
+}
+
+body {
+  background: #f3f2ea !important;
+}
+
+.latest-news-title-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 29px;
+}
+.LatestNews-Title {
+  margin: 0;
+  padding: 0;
+  color: #1a1a1a;
+  font-size: 33px;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  line-height: 1.1;
+  word-wrap: break-word;
+  text-align: left;
+}
+.horizontal-line {
+  flex: 1;
+  height: 2px;
+  background: #222;
+  min-width: 40px;
+  display: block;
+  margin-left: auto;
+  width: auto !important;
+}
+
+
+.trending-headline-card:hover, .trending-headline-card:focus {
+  background: #e0e0e0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  cursor: pointer;
 }

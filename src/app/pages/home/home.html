@@ -27,7 +27,7 @@
   <div class="news-cards-container d-flex flex-row gap-4">
     <div class="unified-card">
       <div class="slider-wrapper">
-        <div class="custom-slide" *ngIf="news.length && news[currentSlide]">
+        <div class="custom-slide news-card-anim" *ngIf="news.length && news[currentSlide]" (click)="goToDetailByIndex(currentSlide)" style="cursor:pointer">
           <img
             class="custom-slide-img"
             [src]="news[currentSlide].urlToImage || 'assets/default-image.jpg'"
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class="text-only-news-card p-3" *ngIf="news.length > 5">
+      <div class="text-only-news-card p-3 news-card-anim" *ngIf="news.length > 5" (click)="goToDetailByIndex(5)" style="cursor:pointer">
         <div class="text-news-content">
           <div class="headline">{{ news[5]?.title }}</div>
           <div class="summary">
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="side-news-cards d-flex flex-column gap-3">
-      <div class="highlighted-news-card" *ngIf="news.length > 1">
+      <div class="highlighted-news-card news-card-anim" *ngIf="news.length > 13" (click)="goToDetailByIndex(13)" style="cursor:pointer">
         <div class="highlighted-news-img-wrapper position-relative">
           <img
             class="highlighted-news-img"
@@ -73,7 +73,7 @@
           {{ news[13]?.description || news[13]?.content }}
         </div>
       </div>
-      <div class="secondary-news-card" *ngIf="news.length > 2">
+      <div class="secondary-news-card news-card-anim" *ngIf="news.length > 9" (click)="goToDetailByIndex(9)" style="cursor:pointer">
         <img
           class="secondary-news-img"
           [src]="news[9]?.urlToImage || 'assets/default-image.jpg'"
@@ -99,33 +99,56 @@
 
   <div class="main-news-layout">
     <div class="latest-news-section">
-      <div class="LatestNews-Title">Latest News</div>
+      <div class="latest-news-title-row">
+        <div class="LatestNews-Title">Latest News</div>
+        <div class="horizontal-line" style="width: 551px; margin-left:0;"></div>
+      </div>
       <div class="latest-news-grid">
         <div
           class="latest-news-card"
           *ngFor="let item of news.slice(0,8); let i = index"
+          (click)="goToDetail(i)"
+          style="cursor:pointer"
         >
-          <ng-container *ngIf="i < 2">
-            <img
-              class="latest-news-card-img"
-              [src]="item.urlToImage || 'assets/default-image.jpg'"
-              alt="News Image"
-            />
-            <div class="latest-news-card-content">
-              <div class="latest-news-card-title">{{ item.title }}</div>
-              <div class="latest-news-card-meta">
-                <span class="latest-news-card-author">
-                  By {{ item.author && item.author.length > 0 ? item.author :
-                  'Unknown' }}
-                </span>
-                <span class="latest-news-card-date">
-                  {{ item.publishedAt ? (item.publishedAt | date:'mediumDate') :
-                  'Unknown Date' }}
-                </span>
+          <ng-container *ngIf="i === 0 || i === 1">
+            <div class="latest-news-img-overlay-wrapper">
+              <img
+                class="latest-news-card-img"
+                [src]="item.urlToImage || 'assets/default-image.jpg'"
+                alt="News Image"
+              />
+              <div class="latest-news-img-overlay-content">
+                <div class="latest-news-img-overlay-title">
+                  {{ item.title }}
+                </div>
+                <div class="latest-news-img-overlay-meta">
+                  <span class="latest-news-img-overlay-author"
+                    >By {{ item.author || 'Unknown' }}</span
+                  >
+                  <span class="latest-news-img-overlay-date"
+                    >{{ item.publishedAt | date:'mediumDate' }}</span
+                  >
+                </div>
               </div>
             </div>
           </ng-container>
-          <ng-container *ngIf="i >= 2 && i < 4">
+          <ng-container *ngIf="i === 2">
+            <div class="latest-news-card-content">
+              <div class="latest-news-card-title">{{ item.title }}</div>
+              <div class="latest-news-card-meta">
+                <span class="latest-news-card-author"
+                  >By {{ item.author || 'Unknown' }}</span
+                >
+                <span class="latest-news-card-date"
+                  >{{ item.publishedAt | date:'mediumDate' }}</span
+                >
+              </div>
+              <div class="latest-news-card-summary">
+                {{ item.description || item.content }}
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="i === 3">
             <div class="latest-news-card-content">
               <div class="latest-news-card-title">{{ item.title }}</div>
               <div class="latest-news-card-meta">
@@ -180,23 +203,24 @@
             </div>
           </ng-container>
           <ng-container *ngIf="i === 6">
-            <img
-              class="latest-news-card-img"
-              [src]="item.urlToImage || 'assets/default-image.jpg'"
-              alt="News Image"
-            />
-            <div class="latest-news-card-content">
-              <div class="latest-news-card-title">{{ item.title }}</div>
-              <div class="latest-news-card-meta">
-                <span class="latest-news-card-author"
-                  >By {{ item.author || 'Unknown' }}</span
-                >
-                <span class="latest-news-card-date"
-                  >{{ item.publishedAt | date:'mediumDate' }}</span
-                >
-              </div>
-              <div class="latest-news-card-summary">
-                {{ item.description || item.content }}
+            <div class="latest-news-img-overlay-wrapper">
+              <img
+                class="latest-news-card-img"
+                [src]="item.urlToImage || 'assets/default-image.jpg'"
+                alt="News Image"
+              />
+              <div class="latest-news-img-overlay-content">
+                <div class="latest-news-img-overlay-title">
+                  {{ item.title }}
+                </div>
+                <div class="latest-news-img-overlay-meta">
+                  <span class="latest-news-img-overlay-author"
+                    >By {{ item.author || 'Unknown' }}</span
+                  >
+                  <span class="latest-news-img-overlay-date"
+                    >{{ item.publishedAt | date:'mediumDate' }}</span
+                  >
+                </div>
               </div>
             </div>
           </ng-container>
@@ -207,8 +231,10 @@
       <div class="trending-headlines-title">Trending Headlines</div>
       <div class="trending-headlines-list">
         <div
-          class="trending-headline-card"
-          *ngFor="let item of news.slice(9,17)"
+          class="trending-headline-card news-card-anim"
+          *ngFor="let item of news.slice(9,17); let i = index"
+          (click)="goToDetailByIndex(i + 9)"
+          style="cursor:pointer"
         >
           <img
             class="headline-img"
@@ -232,5 +258,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="view-more-wrapper">
+    <div class="view-more-btn">View More</div>
   </div>
 </div>
