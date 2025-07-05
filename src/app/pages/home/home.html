@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="side-news-cards d-flex flex-column gap-3">
-      <div class="highlighted-news-card news-card-anim" *ngIf="news.length > 13" (click)="goToDetailByIndex(13)" style="cursor:pointer">
+      <div class="highlighted-news-card" *ngIf="news.length > 13" (click)="goToDetailByIndex(13)" style="cursor:pointer">
         <div class="highlighted-news-img-wrapper position-relative">
           <img
             class="highlighted-news-img"
