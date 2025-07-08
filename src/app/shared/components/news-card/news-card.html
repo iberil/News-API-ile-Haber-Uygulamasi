@@ -1,22 +1,74 @@
-<!-- news-card.component.html -->
+<!-- SLIDER CARD -->
 <div
-  class="news-card"
-  [ngStyle]="{'background-image': 'url(' + (article.urlToImage || placeholder) + ')'}"
+  *ngIf="cardType === 'slider'"
+  class="custom-slide news-card-anim"
+  (click)="onCardClick()"
 >
-  <div class="news-card-overlay">
-    <div class="news-title">{{ article.title }}</div>
-    <div class="news-meta">
-      <div>{{ article.author || 'Unknown' }}</div>
-      <div>{{ article.publishedAt | date:'mediumDate' }}</div>
+  <img [src]="getImage()" alt="Haber görseli" />
+
+  <div class="custom-slide-gradient"></div>
+  <div class="custom-slide-content">
+    <div class="custom-slide-title">{{ article.title }}</div>
+    <div class="custom-slide-meta">
+      <div class="custom-slide-author">
+        By {{ article.author || 'Unknown' }}
+      </div>
+      <div class="custom-slide-time">
+        {{ article.publishedAt | date:'mediumDate' }}
+      </div>
     </div>
   </div>
 </div>
 
-<div class="news-card-body">
-  <div class="news-card-header">{{ article.title }}</div>
-  <div class="news-meta light">
-    <div>{{ article.author || 'Unknown' }}</div>
-    <div>{{ article.publishedAt | date:'mediumDate' }}</div>
+<!-- TEXT-ONLY CARD -->
+<div
+  *ngIf="cardType === 'text-only'"
+  class="text-only-news-card p-3 news-card-anim"
+  (click)="onCardClick()"
+>
+  <div class="text-news-content">
+    <div class="headline">{{ article.title }}</div>
+    <div class="summary">{{ article.description || article.content }}</div>
   </div>
-  <div class="news-summary">{{ article.description }}</div>
+  <img [src]="getImage()" alt="Haber görseli" />
+</div>
+
+<!-- HIGHLIGHTED CARD -->
+<div
+  *ngIf="cardType === 'highlighted'"
+  class="highlighted-news-card"
+  (click)="onCardClick()"
+>
+  <div class="highlighted-news-img-wrapper position-relative">
+    <img [src]="getImage()" alt="Haber görseli" />
+
+    <div class="highlighted-news-title">{{ article.title }}</div>
+  </div>
+  <div class="highlighted-news-content">
+    {{ article.description || article.content }}
+  </div>
+</div>
+
+<!-- SECONDARY CARD -->
+<div
+  *ngIf="cardType === 'secondary'"
+  class="secondary-news-card news-card-anim"
+  (click)="onCardClick()"
+>
+  <img [src]="getImage()" alt="Haber görseli" />
+
+  <div class="secondary-news-content">
+    <div class="secondary-news-headline">{{ article.title }}</div>
+    <div class="secondary-news-meta">
+      <span class="secondary-news-date"
+        >{{ article.publishedAt | date:'mediumDate' }}</span
+      >
+      <span class="secondary-news-source"
+        >{{ article.author || 'Unknown' }}</span
+      >
+    </div>
+    <div class="secondary-news-summary">
+      {{ article.description || article.content }}
+    </div>
+  </div>
 </div>

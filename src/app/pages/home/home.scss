@@ -73,17 +73,21 @@
 .search-button:hover {
   background-color: #b36b6d; /* Açık ton bir renk */
 }
+
 .category-bar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
   background: #1a1a1a;
-  padding: 12px 0 0 0; /* alt padding sıfırlandı */
-  margin: 0 auto 0 auto !important; /* üst ve alt margin sıfırlandı */
+  padding: 12px 0;
+  margin-top: 16px;
   width: 1240px;
+  margin: 0 auto;
   position: relative;
   padding-right: 150px;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .category-btn {
@@ -783,7 +787,7 @@ body {
   background: #222;
   min-width: 40px;
   display: block;
-  margin-left: auto;
+   margin-left: auto;
   width: auto !important;
 }
 

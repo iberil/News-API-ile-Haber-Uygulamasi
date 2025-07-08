@@ -1,44 +1,91 @@
 .news-detail-wrapper {
-  max-width: 700px;
-  margin: 40px auto;
+  max-width: 930px; /* img'ye göre container genişliği */
+  margin: 0 auto;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 32px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch; /* içerikler genişliği otomatik alır */
+  overflow: hidden; /* border-radius köşeleri taşmasın diye */
+}
+
+.news-detail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.news-detail-inner {
+  padding: 0 175px 32px; /* sağdan ve soldan boşluk */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* center yerine stretch, sola hizalama için */
 }
 
 .news-detail-title {
   font-size: 28px;
   font-family: Georgia, serif;
   font-weight: 700;
-  margin-bottom: 18px;
-  text-align: center;
-}
-
-.news-detail-img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 18px;
-  object-fit: cover;
+  margin: 24px 0 18px;
+  text-align: left;
 }
 
 .news-detail-meta {
   display: flex;
-  gap: 18px;
+  gap: 20px; /* author ve publish-date arası 20px */
   color: #666;
   font-size: 15px;
   margin-bottom: 18px;
+  align-items: center;
+  position: relative;
+  justify-content: flex-start; /* sola hizala */
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.meta-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+  height: 32px;
+}
+
+.meta-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.meta-icon:hover {
+  opacity: 1;
+}
+
+.news-detail-meta .author,
+.news-detail-meta .publish-date {
+  width: auto;
+  min-width: 91px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .news-detail-content {
   font-size: 18px;
-  color: #04594d;
+  color: #1A1A1A;
   font-family: Georgia, serif;
   text-align: left;
   margin-top: 10px;
+  width: 100%;
 }

@@ -46,13 +46,17 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Uygulama Arayüzü
 
-### Ana Sayfa
+### Üst Kısım ve Kategori Barı
 
-![Ana Sayfa](src/assets/screenshots/home.png)
+![Üst Kısım ve Kategori Barı](src/assets/screenshots/latest-news.png)
 
-### Latest News Bölümü
+Bu bölümde uygulamanın başlığı, arama çubuğu ve kategori barı yer alır. Kategori barının hemen altında öne çıkan haber kartları ve yan haberler gösterilir.
 
-![Latest News](src/assets/screenshots/latest-news.png)
+### Latest News ve Trending Headlines
+
+![Latest News ve Trending Headlines](src/assets/screenshots/home.png)
+
+Ana sayfanın devamında, en son haberler ve sağda trend olan başlıklar listelenir. Kart yapısı ve modern tasarım ile haberler kolayca takip edilebilir.
 
 ## Development server
 

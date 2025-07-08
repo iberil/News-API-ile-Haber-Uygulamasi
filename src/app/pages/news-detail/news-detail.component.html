@@ -1,11 +1,24 @@
 <div *ngIf="newsItem" class="news-detail-wrapper">
-  <h1 class="news-detail-title">{{ newsItem.title }}</h1>
-  <img *ngIf="newsItem.urlToImage" [src]="newsItem.urlToImage" class="news-detail-img" alt="News Image" />
-  <div class="news-detail-meta">
-    <span>By {{ newsItem.author || 'Unknown' }}</span>
-    <span>{{ newsItem.publishedAt | date:'mediumDate' }}</span>
-  </div>
-  <div class="news-detail-content">
-    {{ newsItem.description || newsItem.content }}
+  <img
+    *ngIf="newsItem.urlToImage"
+    [src]="newsItem.urlToImage"
+    class="news-detail-img"
+    alt="News Image"
+  />
+
+  <div class="news-detail-inner">
+    <h1 class="news-detail-title">{{ newsItem.title }}</h1>
+    <div class="news-detail-meta">
+      <span class="author">By {{ newsItem.author || "Unknown" }}</span>
+      <span class="publish-date">{{ newsItem.publishedAt | date : "mediumDate" }}</span>
+      <div class="meta-icons">
+        <img src="/assets/icons/comment.svg" alt="Comment" class="meta-icon" />
+        <img src="/assets/icons/share.svg" alt="Share" class="meta-icon" />
+        <img src="/assets/icons/save.svg" alt="Save" class="meta-icon" />
+      </div>
+    </div>
+    <div class="news-detail-content">
+      {{ newsItem.description || newsItem.content }}
+    </div>
   </div>
 </div>
